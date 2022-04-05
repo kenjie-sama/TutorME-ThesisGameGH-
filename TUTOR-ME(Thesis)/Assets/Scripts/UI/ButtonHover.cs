@@ -9,9 +9,4 @@ public class ButtonHover : MonoBehaviour
     [SerializeField] private float scaleSize = 1.3f;
     public void MouseOver(int val) => buttons[val].DOScale(new Vector3(scaleSize, scaleSize, scaleSize), 0.3f).SetEase(Ease.OutCubic);
     public void MouseOut(int val) => buttons[val].DOScale(Vector3.one, 0.3f).SetEase(Ease.OutCubic);
-
-    public void ExecuteTransition()
-    {
-        // StartCoroutine(TransitionManager.Instance.Scale2D());
-    }
 }
