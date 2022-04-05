@@ -10,8 +10,9 @@ namespace MotionGraphics
     [Serializable]
     public class TransitionsObject
     {
-        [Header("Need Reference")] [SerializeField]
-        private RectTransform shapeParent, translateEndPos, scaleEndSizeDelta;
+        [Header("Need Reference")] 
+        [SerializeField] private RectTransform transitionRectTrans; // The Root of shapes and transition Positions
+        [SerializeField] private RectTransform translateEndPos, scaleEndSizeDelta;
 
         [Space, Header("No Need Reference"), SerializeField]
         private Ease inEase = Ease.OutCubic;
@@ -20,11 +21,20 @@ namespace MotionGraphics
         [SerializeField] private RectTransform[] shapeChildren;
         [SerializeField] private Vector2 orig_rectSize;
 
+        [SerializeField] private GameObject transitionObject;
+        
+        [SerializeField] private RectTransform shapeParent;
+
+        public GameObject TransitionObject => transitionObject;
+
         /// <summary>
         /// Initialize first the values of Transition Object before Calling or Executing
         /// </summary>
         public void InitializeValues()
         {
+            int countParents = transitionRectTrans.childCount - 1; // from 0 - n, not 1 - n so we subtract 1 to get the nth or last child of the parent
+            transitionObject = transitionRectTrans.gameObject; // Get the gameObject for toggling the root of the TransitionObjects
+            shapeParent = transitionRectTrans.GetChild(countParents).GetComponent<RectTransform>();
             try
             {
                 int count = shapeParent.childCount;
@@ -43,7 +53,9 @@ namespace MotionGraphics
         {
             string shapes = "Shapes: ";
             Debug.LogWarning($"Warning! Print Info Starts");
-            Debug.Log($"Parent Name: {(shapeParent == null ? "null" : shapeParent.name)} | " +
+            Debug.Log(
+                $"Container Object: {(transitionRectTrans == null ? "null" : transitionRectTrans.name)} | " +
+                      $"Parent Name: {(shapeParent == null ? "null" : shapeParent.name)} | " +
                       $"End Pos: {(translateEndPos == null ? "null" :  translateEndPos.name)} | " +
                       $"End Size Delta: {(scaleEndSizeDelta == null ? "null" : scaleEndSizeDelta.name)}");
             Debug.Log($"Ease: {inEase.ToString()} | Duration: {duration} | Delay: {delay} | Delay Plus: {delayPlus}");
@@ -68,8 +80,7 @@ namespace MotionGraphics
             RectTransform[] children = isReverse ? shapeChildren.Reverse().ToArray() : shapeChildren;
             foreach (var child in children)
             {
-                child.DOMoveX(isReset ? shapeParent.position.x : translateEndPos.position.x, duration)
-                    .SetDelay(delay).SetEase(inEase);
+                child.DOMoveX(isReset ? shapeParent.position.x : translateEndPos.position.x, duration).SetDelay(delay).SetEase(inEase);
                 delay += delayPlus;
             }
 
@@ -84,8 +95,7 @@ namespace MotionGraphics
             RectTransform[] children = isReverse ? shapeChildren.Reverse().ToArray() : shapeChildren;
             foreach (var child in children)
             {
-                child.DOMoveX(isReset ? shapeParent.position.x : translateEndPos.position.x, duration).SetDelay(delay)
-                    .SetEase(inEase);
+                child.DOMoveX(isReset ? shapeParent.position.x : translateEndPos.position.x, duration).SetDelay(delay).SetEase(inEase);
                 delay += delayPlus;
             }
 
@@ -100,8 +110,7 @@ namespace MotionGraphics
             RectTransform[] children = isReverse ? shapeChildren.Reverse().ToArray() : shapeChildren;
             foreach (var child in children)
             {
-                child.DOMove(isReset ? shapeParent.position : translateEndPos.position, duration).SetDelay(delay)
-                    .SetEase(inEase);
+                child.DOMove(isReset ? shapeParent.position : translateEndPos.position, duration).SetDelay(delay).SetEase(inEase);
                 delay += delayPlus;
             }
 
@@ -127,8 +136,7 @@ namespace MotionGraphics
             RectTransform[] children = isReverse ? shapeChildren.Reverse().ToArray() : shapeChildren;
             foreach (var child in children)
             {
-                child.DOSizeDelta(isReset ? orig_rectSize : scaleEndSizeDelta.rect.size, duration).SetDelay(delay)
-                    .SetEase(inEase);
+                child.DOSizeDelta(isReset ? orig_rectSize : scaleEndSizeDelta.rect.size, duration).SetDelay(delay).SetEase(inEase);
                 delay += delayPlus;
             }
 
@@ -143,10 +151,7 @@ namespace MotionGraphics
             RectTransform[] children = isReverse ? shapeChildren.Reverse().ToArray() : shapeChildren;
             foreach (var child in children)
             {
-                child.DOSizeDelta(isReset ? orig_rectSize : scaleEndSizeDelta.rect.size, duration).SetDelay(delay)
-                    .SetEase(inEase);
-                // child.DOMove(isReset ? shapeParent.position : scaleEndSizeDelta.position, duration).SetDelay(delay)
-                //     .SetEase(inEase);
+                child.DOSizeDelta(isReset ? orig_rectSize : scaleEndSizeDelta.rect.size, duration).SetDelay(delay).SetEase(inEase);
                 delay += delayPlus;
             }
 
