@@ -34,8 +34,8 @@ public class ModalManager : Manager<ModalManager>
 
     public void ShowModal(
         string _message, string _description, 
-        bool showPostiveButton = false, string positiveText = "Yes", 
-        bool showNegativeButton = false, string negativeText = "No", 
+        bool _showPostiveButton = false, string _positiveText = "Yes", 
+        bool _showNegativeButton = false, string _negativeText = "No", 
         Action positive_callBack = null, Action negative_callBack = null)
     {
         if (m_inUse)
@@ -49,11 +49,11 @@ public class ModalManager : Manager<ModalManager>
 
         m_txtMessage.text = _message;
         m_txtDescription.text = _description;
-        txt_postive.text = positiveText;
-        txt_negative.text = negativeText;
+        txt_postive.text = _positiveText;
+        txt_negative.text = _negativeText;
         
-        m_btnPositive.gameObject.SetActive(showPostiveButton);
-        m_btnNegative.gameObject.SetActive(showNegativeButton);
+        m_btnPositive.gameObject.SetActive(_showPostiveButton);
+        m_btnNegative.gameObject.SetActive(_showNegativeButton);
 
         m_btnNegative.onClick.AddListener(HideModal);
         

@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject container_Options;
     [SerializeField] private RectTransform rectTrans_bgOptions, rectTrans_bgOptionsEndPos;
 
-    [SerializeField] private Button btnOption, btnToMainMenu;
+    [SerializeField] private Button btnOption, btnToMainMenu, btnQuit;
     
     [Space, Header("No Need Reference")] 
     [SerializeField] private Vector2 origPos_bgOptions, endPos_bgOptions;
@@ -20,7 +20,8 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private float duration = 0.3f;
     [SerializeField] private Ease showEase = Ease.OutBounce, hideEase = Ease.InBack;
-
+    
+    public static MainMenu Instance;
     private void Awake()
     {
         InitializeValues();
@@ -29,12 +30,14 @@ public class MainMenu : MonoBehaviour
 
     private void InitializeListeners()
     {
+        btnQuit.onClick.AddListener(() => { Application.Quit(); Debug.LogWarning("Application Quit/Exit"); });
         btnOption.onClick.AddListener(() => SlideInX(container_Options, rectTrans_bgOptions, endPos_bgOptions.x));
-        btnToMainMenu.onClick.AddListener(() => SlideOutX(container_Options, rectTrans_bgOptions, origPos_bgOptions.x));
+        btnToMainMenu.onClick.AddListener(() => GotoMainMenu());
     }
 
     private void InitializeValues()
     {
+        Instance = this;
         optionsImagePanel = container_Options.GetComponent<Image>();
         GetPos(rectTrans_bgOptions, rectTrans_bgOptionsEndPos, out origPos_bgOptions, out endPos_bgOptions);
     }
@@ -56,5 +59,10 @@ public class MainMenu : MonoBehaviour
     {
         optionsImagePanel.DOFade(0, 0.4f);
         rectTransform.DOMoveX(x, duration).SetEase(showEase).OnComplete(() => gameObject.SetActive(false));
+    }
+    
+    public void GotoMainMenu()
+    {
+        SlideOutX(container_Options, rectTrans_bgOptions, origPos_bgOptions.x);
     }
 }
