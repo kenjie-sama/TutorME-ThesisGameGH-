@@ -8,6 +8,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/To the Frontline/Assets/01 Our Assets/Scripts/Touch Gesture/AvailableGestures.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/To the Frontline/Assets/Scripts/Grid/GridManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/QuestionData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/To the Frontline/Assets/Scripts/Grid/AutochessManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -66,7 +70,9 @@
       <workItem from="1649211467249" duration="1266000" />
       <workItem from="1649213885183" duration="2985000" />
       <workItem from="1649223018266" duration="2221000" />
-      <workItem from="1649227388226" duration="1562000" />
+      <workItem from="1649227388226" duration="3484000" />
+      <workItem from="1649238035209" duration="35000" />
+      <workItem from="1649238946356" duration="6597000" />
     </task>
     <servers />
   </component>
