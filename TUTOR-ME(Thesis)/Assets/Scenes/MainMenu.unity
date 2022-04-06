@@ -3572,8 +3572,9 @@ MonoBehaviour:
   m_btnNegative: {fileID: 4975102354885710318}
   m_modalParent: {fileID: 4975102356138257899}
   m_panel: {fileID: 4975102355511565214}
+  m_panelImage: {fileID: 0}
   m_inUse: 0
-  m_duration: 1
+  m_duration: 0.6
   m_inEase: 30
   m_outEase: 29
 --- !u!1 &867625842
@@ -7793,13 +7794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Description, Description, Description, Description, Description, Description,
-    Description, Description, Description, Description, Description, Description,
-    Description, Description, Description, Description, Description, Description,
-    Description, Description, Description, Description, Description, Description,
-    Description, Description, Description, Description, Description, Description,
-    Description, Description, Description, Description, Description, Description,
-    Description, Description, Description, Description, '
+  m_text: 'Description, '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7808,8 +7803,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7826,12 +7821,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44
+  m_fontSize: 60
   m_fontSizeBase: 42.8
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 50
+  m_fontSizeMax: 60
   m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 4096
@@ -8061,7 +8056,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4975102355511565215
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8477,6 +8472,7 @@ GameObject:
   - component: {fileID: 4975102356740728566}
   - component: {fileID: 4975102356740728560}
   - component: {fileID: 4975102356740728567}
+  - component: {fileID: 4975102356740728568}
   m_Layer: 5
   m_Name: img_modal
   m_TagString: Untagged
@@ -8493,7 +8489,7 @@ RectTransform:
   m_GameObject: {fileID: 4975102356740728565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4975102355648624103}
@@ -8537,6 +8533,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 2
+--- !u!114 &4975102356740728568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4975102356740728565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!114 &7251208655393692788
 MonoBehaviour:
   m_ObjectHideFlags: 0

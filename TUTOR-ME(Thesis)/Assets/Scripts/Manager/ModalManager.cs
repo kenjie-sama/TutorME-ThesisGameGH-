@@ -13,6 +13,8 @@ public class ModalManager : Manager<ModalManager>
     [SerializeField] private Button m_btnPositive, m_btnNegative;
 
     [SerializeField] private GameObject m_modalParent, m_panel;
+    [Header("No Need Reference")] 
+    [SerializeField] private Image m_panelImage;
     [SerializeField] private bool m_inUse = false;
 
     public bool InUse
@@ -30,6 +32,7 @@ public class ModalManager : Manager<ModalManager>
     {
         Instance = this;
         m_panel.SetActive(false);
+        m_panelImage = m_panel.GetComponent<Image>();
     }
 
     public void ShowModal(
@@ -45,8 +48,10 @@ public class ModalManager : Manager<ModalManager>
         m_inUse = true;
         
         m_modal.DOScale(1f, m_duration).SetEase(m_inEase);
+        
         m_panel.SetActive(true);
-
+        m_panelImage.DOFade(0.4f, m_duration);
+        
         m_txtMessage.text = _message;
         m_txtDescription.text = _description;
         txt_postive.text = _positiveText;
@@ -80,7 +85,7 @@ public class ModalManager : Manager<ModalManager>
         {
             m_txtMessage.text = "";
             m_txtDescription.text = "";
-            m_panel.SetActive(false);
+            m_panelImage.DOFade(0, m_duration).OnComplete(()=>m_panel.SetActive(false));
             m_inUse = false;
         });
     }

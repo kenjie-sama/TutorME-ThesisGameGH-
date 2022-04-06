@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,11 +29,18 @@ public class MainMenu : MonoBehaviour
         InitializeListeners();
     }
 
+    private void OnDestroy()
+    {
+        btnQuit.onClick.RemoveAllListeners();
+        btnOption.onClick.RemoveAllListeners();
+        btnToMainMenu.onClick.RemoveAllListeners();
+    }
+
     private void InitializeListeners()
     {
-        btnQuit.onClick.AddListener(() => { Application.Quit(); Debug.LogWarning("Application Quit/Exit"); });
+        btnQuit.onClick.AddListener(QuitGame);
         btnOption.onClick.AddListener(() => SlideInX(container_Options, rectTrans_bgOptions, endPos_bgOptions.x));
-        btnToMainMenu.onClick.AddListener(() => GotoMainMenu());
+        btnToMainMenu.onClick.AddListener(GotoMainMenu);
     }
 
     private void InitializeValues()
@@ -61,8 +69,15 @@ public class MainMenu : MonoBehaviour
         rectTransform.DOMoveX(x, duration).SetEase(showEase).OnComplete(() => gameObject.SetActive(false));
     }
     
-    public void GotoMainMenu()
+    public void GotoMainMenu() => SlideOutX(container_Options, rectTrans_bgOptions, origPos_bgOptions.x);
+
+    public void QuitGame()
     {
-        SlideOutX(container_Options, rectTrans_bgOptions, origPos_bgOptions.x);
+        ModalManager.Instance.ShowModal("Quit Game?", "Are you sure you want to quit?",
+            true, "Yes", true, "No", () => 
+            { 
+                Debug.LogWarning("Application Quit/Exit");
+                Application.Quit();
+            });
     }
 }

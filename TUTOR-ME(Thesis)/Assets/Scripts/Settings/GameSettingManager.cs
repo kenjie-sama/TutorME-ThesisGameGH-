@@ -83,9 +83,7 @@ public class GameSettingManager : MonoBehaviour
     
     private void ConfirmChanges()
     {
-        if (!gameSettingData.IsChanged())
-            return;
-        // MainMenu.Instance.GotoMainMenu();
+        if (!gameSettingData.IsChanged()) return;
         ModalManager.Instance.ShowModal("Confirm Changes", "Apply Setting Configurations?",
             true, "Yes", true, "No", 
             SaveSettings, ResetGameSetting);
