@@ -7,6 +7,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -57,7 +60,12 @@
       <updated>1649063466159</updated>
       <workItem from="1649064041648" duration="11053000" />
       <workItem from="1649084539584" duration="2007000" />
-      <workItem from="1649121370796" duration="1455000" />
+      <workItem from="1649121370796" duration="2055000" />
+      <workItem from="1649169552857" duration="1275000" />
+      <workItem from="1649171499877" duration="7690000" />
+      <workItem from="1649211467249" duration="1266000" />
+      <workItem from="1649213885183" duration="2985000" />
+      <workItem from="1649223018266" duration="1628000" />
     </task>
     <servers />
   </component>
